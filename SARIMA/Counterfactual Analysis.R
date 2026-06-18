@@ -43,21 +43,6 @@ print(cf_model_coeff, n = Inf, width = Inf)
 
 
 
-# Residual Analysis 
-
-cf_resid_plot <- fit_counterfactual |>
-  gg_tsresiduals() +
-  labs(
-    title = "Residual Diagnostics: Baseline step-intervention model"
-  ) +
-  theme(
-    plot.title = element_text(face = "bold", hjust = 0.5)
-  )
-
-cf_resid_plot
-
-
-
 cf_resid <- fit_counterfactual |>
   augment() |>
   pull(.resid)
