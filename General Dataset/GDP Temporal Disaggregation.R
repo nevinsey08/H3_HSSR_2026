@@ -1,5 +1,5 @@
 
-## Temporal Disaggregation of Quarterly GDP to Monthly GDP using Litterman method
+## Temporal Disaggregation of Quarterly GDP to Monthly GDP using Chow-Lin method
 
 
 library(readxl)
@@ -241,23 +241,23 @@ Unemployment_ts <- ts(
 )
 
 
-## Litterman Temporal Disaggregation
+## Chow-Lin Temporal Disaggregation
 
 
 
-GDP_td_litterman <- td(
+GDP_td_chowlin <- td(
   GDP_quarterly_ts ~ IPI_ts + Retail_ts + Exports_ts + Visitors_ts + Unemployment_ts,
   to = "monthly",
   conversion = "sum",
-  method = "litterman-maxlog"
+  method = "chow-lin-maxlog"
 )
 
 
-summary(GDP_td_litterman)
+summary(GDP_td_chowlin)
 
 
 Monthly_GDP_ts <- predict(
-  GDP_td_litterman
+  GDP_td_chowlin
 )
 
 
@@ -290,10 +290,6 @@ Monthly_GDP <- data.frame(
   )
 
 
-Monthly_GDP
-
-
-
 
 
 ## Plot temporally disaggregated monthly GDP
@@ -317,7 +313,7 @@ monthly_gdp_plot <- ggplot(
   ) +
   labs(
     title = "Temporally Disaggregated Monthly GDP",
-    subtitle = "Litterman method",
+    subtitle = "Chow-Lin method",
     x = "Month",
     y = "Monthly GDP, SGD million"
   ) +
@@ -411,21 +407,21 @@ Monthly_GDP_Fernandez_ts <- predict(
 
 
 
-## Chow-Lin Temporal Disaggregation
+## Litterman Temporal Disaggregation
 
-GDP_td_ChowLin <- td(
+GDP_td_litterman <- td(
   GDP_quarterly_ts ~ IPI_ts + Retail_ts + Exports_ts + Visitors_ts + Unemployment_ts,
   to = "monthly",
   conversion = "sum",
-  method = "chow-lin-maxlog"
+  method = "litterman-maxlog"
 )
 
 
-summary(GDP_td_ChowLin)
+summary(GDP_td_litterman)
 
 
-Monthly_GDP_ChowLin_ts <- predict(
-  GDP_td_ChowLin
+Monthly_GDP_Litterman_ts <- predict(
+  GDP_td_litterman
 )
 
 
@@ -433,18 +429,18 @@ Monthly_GDP_ChowLin_ts <- predict(
 
 
 
-## Compare Litterman, Fernández and Chow-Lin 
+## Compare Chow-Lin, Fernández and Litterman
 
 Monthly_GDP_Comparison <- data.frame(
   Date = monthly_gdp_dates,
   GDP_ChowLin_SGD = as.numeric(
-    Monthly_GDP_ChowLin_ts
+    Monthly_GDP_ts
   ),
   GDP_Fernandez_SGD = as.numeric(
     Monthly_GDP_Fernandez_ts
   ),
   GDP_Litterman_SGD = as.numeric(
-    Monthly_GDP_ts
+    Monthly_GDP_Litterman_ts
   )
 ) |>
   mutate(
@@ -458,10 +454,10 @@ Monthly_GDP_Comparison <- data.frame(
       GDP_Fernandez_SGD / 1e6,
     GDP_Litterman_SGD_million =
       GDP_Litterman_SGD / 1e6,
-    diff_Fernandez_vs_Litterman = GDP_Fernandez_SGD - GDP_Litterman_SGD,
-    diff_ChowLin_vs_Litterman = GDP_ChowLin_SGD - GDP_Litterman_SGD,
-    pct_diff_Fernandez_vs_Litterman = diff_Fernandez_vs_Litterman / GDP_Litterman_SGD * 100,
-    pct_diff_ChowLin_vs_Litterman = diff_ChowLin_vs_Litterman / GDP_Litterman_SGD * 100
+    diff_Fernandez_vs_ChowLin = GDP_Fernandez_SGD - GDP_ChowLin_SGD,
+    diff_Litterman_vs_ChowLin = GDP_Litterman_SGD - GDP_ChowLin_SGD,
+    pct_diff_Fernandez_vs_ChowLin = diff_Fernandez_vs_ChowLin / GDP_ChowLin_SGD * 100,
+    pct_diff_Litterman_vs_ChowLin = diff_Litterman_vs_ChowLin / GDP_ChowLin_SGD * 100
   ) |>
   filter(
     Date >= td_start_date,
@@ -470,11 +466,6 @@ Monthly_GDP_Comparison <- data.frame(
 
 
 Monthly_GDP_Comparison
-
-
-
-
-
 
 
 
