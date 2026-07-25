@@ -4,6 +4,12 @@
 
 **Nevin Shi En Yu, 2026** 
 
+## Research Paper 
+
+The full research report is available here:
+(paper/NUS-MOE H3 HSSRP Research Report_Nevin Shi En Yu_Draft 3_Editted (2).pdf)
+
+
 ---
 **ABSTRACT:**
 This paper examines whether PayNow reduced aggregate cash demand in Singapore. Using a constructed monthly currency in circulation to gross domestic product (CIC/GDP) ratio series, this paper estimates seasonal autoregressive integrated moving average (SARIMA) interrupted time-series models over the period from April 2014 to December 2019, treating August 2017 as the PayNow intervention month. The candidate models incorporate both step and ramp specifications to compare and distinguish an immediate level shift from a gradual post-intervention decline effect. The selected baseline model estimates a PayNow step coefficient of −0.00515, significant at the 1% level. This implies an immediate and persistent 0.515 percentage-point reduction in CIC/GDP relative to the no-PayNow counterfactual. Actual CIC/GDP lies below the counterfactual in 28 out of 29 post-intervention months. The coefficients of all ramp-intervention models are insignificant. Overall, the findings suggest that PayNow resulted in a one-time persistent reduction in aggregate cash demand, although the single-country experimental design warrants cautious causal interpretation.
