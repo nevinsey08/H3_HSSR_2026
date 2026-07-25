@@ -186,19 +186,17 @@ fx_nco_resid <- fx_nco_augmented |>
   filter(
     is.finite(.innov)
   ) |>
-  pull(
-    .innov
-  )
+  pull(.innov)
 
 T_fx <- length(fx_nco_resid)
 
-lb_lag_fx <- min(24, T_fx/5)
+lb_lag_fx <- min(10, floor(T_fx/5))
 
 fx_nco_ljung_test <- Box.test(
   fx_nco_resid,
   lag = lb_lag_fx,
   type = "Ljung-Box",
-  fitdf = 3
+  fitdf = 4
 ) 
 
 

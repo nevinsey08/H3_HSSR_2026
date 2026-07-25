@@ -269,15 +269,15 @@ placebo_ljung_success <- purrr::map_dfr(
   function(placebo_label) {
     placebo_resid <- placebo_fits[[placebo_label]] |>
       augment() |>
-      pull(.resid)
+      pull(.innov)
     placebo_resid <- na.omit(placebo_resid)
     T <- length(placebo_resid)
-    lb_lag <- min(24, T/5)
+    lb_lag <- min(24, floor(T/5))
     lb_test <- Box.test(
       placebo_resid,
       lag = lb_lag,
       type = "Ljung-Box",
-      fitdf = 3
+      fitdf = 4
     )
     tibble(
       placebo_label = placebo_label,

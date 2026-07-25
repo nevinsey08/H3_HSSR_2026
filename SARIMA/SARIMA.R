@@ -527,7 +527,7 @@ for (m in SARIMA_models) {
       all_of(m)
     ) |>
     augment() |>
-    pull(.resid)
+    pull(.innov)
   resid <- na.omit(
     resid
   )
@@ -539,7 +539,7 @@ for (m in SARIMA_models) {
     pull(
       Model_fitdf
     )
-  lb_lag <- min(24, T/5)
+  lb_lag <- min(24, floor(T/5))
   lb_test <- Box.test(
     resid,
     lag = lb_lag,
