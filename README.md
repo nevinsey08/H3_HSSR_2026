@@ -9,7 +9,7 @@
 ### Research Paper 
 
 The full research report is available here:
-[Click here to read the full research report](paper/NUS-MOE%20H3%20HSSRP%20Research%20Report_Nevin%20Shi%20En%20Yu_Draft%203_Editted%20%282%29.pdf)
+[Click here to read the full research report](https://github.com/nevinsey08/H3_HSSR_2026/blob/main/Full%20Research%20Paper/NUS-MOE%20H3%20HSSRP%20Research%20Report_Nevin%20Shi%20En%20Yu_Draft%203_Editted%20(2).pdf)
 
 <br>
 
