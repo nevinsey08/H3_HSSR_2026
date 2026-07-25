@@ -12,7 +12,7 @@ library(scales)
 
 
 
-td_file_path <- "C:/Users/user/Downloads/HSSR H3/HSSR H3/General Dataset/GDP Temporal Disaggregation Indicators.xlsx"
+td_file_path <- "C:/Users/user/Downloads/HSSR H3/HSSR H3/General Dataset/H3 HSSR Raw Dataset.xlsx"
 
 td_start_date <- as.Date("2014-01-01")
 td_end_date <- as.Date("2019-12-31")
@@ -48,7 +48,7 @@ GDP_quarterly_raw <- read_excel(
   td_file_path,
   sheet = "My Series",
   range = cellranger::cell_limits(
-    c(4, 10),
+    c(30, 10),
     c(NA, 11)
   ),
   col_names = FALSE

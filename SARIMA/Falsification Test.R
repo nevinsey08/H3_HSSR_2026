@@ -35,9 +35,9 @@ parse_excel_date <- function(x) {
 
 
 fx_monthly <- read_data(
-  date_col = 18,
-  value_col = 19,
-  start_row = 4
+  date_col = 22,
+  value_col = 23,
+  start_row = 30
 ) |>
   mutate(
     Date = parse_excel_date(date_raw),
@@ -165,9 +165,18 @@ fx_nco_resid_plot <- fit_fx_nco |>
     type = "innovation",
     plot_type = "histogram",
     lag_max = 36
+  ) + 
+  labs(
+    title = "Residual Diagnostics: fx_step_model"
+      ) + 
+  theme(
+    plot.title = element_text(
+      face = "bold",
+      hjust = 0.5
+    )
   )
 
-
+   
 fx_nco_resid_plot
 
 

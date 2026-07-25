@@ -11,7 +11,7 @@ library(scales)
 
 
 
-file_path <- "C:/Users/user/Downloads/HSSR H3/HSSR H3/General Dataset/HSSR_H3_Dataset.xlsx"
+file_path <- "C:/Users/user/Downloads/HSSR H3/HSSR H3/General Dataset/H3 HSSR Raw Dataset.xlsx"
 
 
 start_date <- as.Date("2014-04-01")
@@ -28,10 +28,10 @@ intervention_date <- as.Date(sprintf("%04d-%02d-01", intervention_year, interven
 
 
 
-read_data <- function(date_col, value_col, start_row = 5, end_row = NA) {
+read_data <- function(date_col, value_col, start_row = 6, end_row = NA) {
   raw <- read_excel(
     file_path,
-    sheet = "CIC-GDP Ratio",
+    sheet = "My Series",
     range = cell_limits(c(start_row, date_col), c(end_row, value_col)),
     col_names = FALSE
   )
@@ -55,7 +55,7 @@ parse_month_date <- function(x) {
 
 
 
-CIC_monthly <- read_data(date_col = 2, value_col = 3) |>
+CIC_monthly <- read_data(date_col = 15, value_col = 16) |>
   mutate(
     Date = parse_month_date(date_raw),
     CIC_SGD_million = num(value_raw),
