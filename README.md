@@ -23,6 +23,21 @@ I would like to express my sincere gratitude to my research supervisor Dr Huang 
 
 ---
 
+### Replication Workflow
+
+To replicate the empirical analysis, the R scripts should be run in the following order:
+
+1. [**GDP Temporal Disaggregation.R**](https://github.com/nevinsey08/H3_HSSR_2026/blob/main/General%20Dataset/GDP%20Temporal%20Disaggregation.R)
+2. [**CIC-GDP Ratio.R**](https://github.com/nevinsey08/H3_HSSR_2026/blob/main/General%20Dataset/CIC-GDP%20Ratio.R)
+3. [**SARIMA.R**](https://github.com/nevinsey08/H3_HSSR_2026/blob/main/SARIMA/SARIMA.R)
+4. [**Counterfactual Analysis.R**](https://github.com/nevinsey08/H3_HSSR_2026/blob/main/Counterfactual%20Analysis/Counterfactual%20Analysis.R)
+5. [**In-Time Placebo Tests.R**](https://github.com/nevinsey08/H3_HSSR_2026/blob/main/Robustness%20Tests/In-Time%20Placebo%20Tests.R)
+6. [**Falsification Test.R**](https://github.com/nevinsey08/H3_HSSR_2026/blob/main/Robustness%20Tests/Falsification%20Test.R)
+
+The scripts should be run sequentially because later scripts depend on datasets and model outputs created in earlier scripts.
+
+---
+
 **DATA SOURCES:**
 
 - Currency in Circulation, end-of-period, monthly
